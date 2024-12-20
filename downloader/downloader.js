@@ -91,6 +91,7 @@ async function youtubeDownloader(address, folder, name) {
     await youtubedl(address, {
         noWarnings: true,
         preferFreeFormats: true,
+        embedMetadata: true,
         f: "mp4",
         o: name,
         paths: folder
