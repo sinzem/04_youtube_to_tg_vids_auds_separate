@@ -4,6 +4,7 @@ const path = require("path");
 const TGBot = require("node-telegram-bot-api");
 const triggerWordStart = require("./triggerWordStart/triggerWordStart");
 const yolcuBeats = require("./channel/yolcuBeats");
+const mentalpsyzone = require("./channel/mentalpsyzone");
 
 const token = process.env.TELEGRAM_TOKEN;
 
@@ -19,6 +20,14 @@ bot.on("message", async (msg) => {
     if (text.includes(yolcuBeats.startWord)) {
         try {
             triggerWordStart(text, sendToChannel, yolcuBeats, sendMessage, chatId);
+        } catch (e) {
+            await bot.sendMessage(chatId, "An error occurred, please try later")
+        }
+    }
+
+    if (text.includes(mentalpsyzone.startWord)) {
+        try {
+            triggerWordStart(text, sendToChannel, mentalpsyzone, sendMessage, chatId);
         } catch (e) {
             await bot.sendMessage(chatId, "An error occurred, please try later")
         }
